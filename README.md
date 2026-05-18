@@ -16,9 +16,9 @@ Get a **professional, Wall Street-grade investment analysis report in under 3 mi
 
 Below is a live video demonstration showing the complete walkthrough of the Streamlit application in action (entering the stock ticker, running the AI Crew analysis, checking progress, scrolling the generated report, and inspecting database/storage logs):
 
-![AI Financial Analyst UI Demo Walkthrough](assets/financial_agent_demo.mp4)
+<video src="https://raw.githubusercontent.com/Sindhura942/ai-investment-analyst/main/.github/assets/financial_agent_demo.mp4" width="100%" controls autoplay loop muted></video>
 
-*Note: If your markdown viewer does not render the video inline, you can open the file [financial_agent_demo.mp4](assets/financial_agent_demo.mp4) directly in any standard media player or browser.*
+*Note: If your markdown viewer does not render the video inline, you can open the file [.github/assets/financial_agent_demo.mp4](.github/assets/financial_agent_demo.mp4) directly in any standard media player or browser.*
 
 ### 🎨 Web App Layout Mockup:
 
@@ -67,7 +67,7 @@ To verify that the multi-agent system successfully persists every generated inve
 
 Here is the Azure Portal view showing the `reports` Blob Storage container populated with the uploaded Markdown files:
 
-![Azure Blob Storage Reports Container](assets/azure_blob_storage_screenshot.png)
+![Azure Blob Storage Reports Container](.github/assets/azure_blob_storage_screenshot.png)
 
 </details>
 
@@ -77,7 +77,7 @@ Here is the Azure Portal view showing the `reports` Blob Storage container popul
 
 Here is the database manager view executing a query on the `reports_log` table, showing the stored metadata, ticker names, and generated markdown reports:
 
-![Azure PostgreSQL Database Reports Log](assets/azure_postgresql_screenshot.png)
+![Azure PostgreSQL Database Reports Log](.github/assets/azure_postgresql_screenshot.png)
 
 </details>
 
@@ -361,7 +361,7 @@ The FastAPI server provides several endpoints that can be integrated into extern
 * **Interactive API Documentation (Swagger UI):**
   You can execute and test this endpoint directly in your browser by visiting `http://localhost:8000/docs`:
 
-  ![FastAPI Swagger UI Analyze Endpoint](assets/fastapi_swagger_screenshot.png)
+  ![FastAPI Swagger UI Analyze Endpoint](.github/assets/fastapi_swagger_screenshot.png)
 
 
 
