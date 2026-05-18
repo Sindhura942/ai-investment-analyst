@@ -16,9 +16,9 @@ Get a **professional, Wall Street-grade investment analysis report in under 3 mi
 
 Below is a live video demonstration showing the complete walkthrough of the Streamlit application in action (entering the stock ticker, running the AI Crew analysis, checking progress, scrolling the generated report, and inspecting database/storage logs):
 
-![AI Financial Analyst Crew Interactive UI Video Demo](assets/financial_agent_demo.webp)
+<video src="assets/financial_agent_demo.mp4" width="100%" controls autoplay loop muted></video>
 
-*Note: If your markdown viewer does not render the WebP video animation, you can open the file [financial_agent_demo.webp](assets/financial_agent_demo.webp) directly in any standard web browser.*
+*Note: If your markdown viewer does not render the video inline, you can open the file [financial_agent_demo.mp4](assets/financial_agent_demo.mp4) directly in any standard media player or browser.*
 
 ### 🎨 Web App Layout Mockup:
 
@@ -180,20 +180,55 @@ Each of the four agents is configured with a specific **backstory**, a **goal**,
   | **PostgreSQL Record** | Logs the ticker symbol and the exact time of research into a central database. |
   | **Blob Storage Archival** | Uploads the full markdown file to the cloud and returns a permanent public link. |
 
+## 🌐 Dual-Market Support: USA & India Stock Analysis
+
+This AI Multi-Agent system has been custom-engineered to natively analyze stocks from two key markets: **the United States (USA)** and **India**. The pipeline automatically detects the region, adapts the research benchmarks, and translates macroeconomics seamlessly based on the ticker you input:
+
+### 🇺🇸 1. USA Stocks (Default)
+* **Ticker Format:** Enter standard US stock symbols directly (e.g., `AAPL`, `MSFT`, `TSLA`, `NVDA`).
+* **Under the Hood Benchmarking:**
+  * Compares stock return metrics against the **S&P 500 (`SPY`)** benchmark.
+  * Fetches US macroeconomic factors: US CPI (Inflation), Federal Funds Interest Rates, and US Gross Domestic Product (GDP) from FRED (Federal Reserve Economic Data).
+
+### 🇮🇳 2. Indian Stocks (NSE & BSE)
+* **Ticker Format:** Add the exchange suffix to the symbol:
+  * **NSE (National Stock Exchange):** Add `.NS` to the symbol (e.g., `TCS.NS`, `RELIANCE.NS`, `INFY.NS`, `HDFCBANK.NS`).
+  * **BSE (Bombay Stock Exchange):** Add `.BO` to the symbol (e.g., `TCS.BO`, `RELIANCE.BO`).
+* **Under the Hood Benchmarking:**
+  * Compares stock return metrics against the **Nifty 50 Index (`^NSEI`)** instead of the S&P 500.
+  * Automatically maps the stock to its corresponding **NSE Sectoral Index** (e.g., `^CNXIT` for Tech, `^NSEBANK` for Finance, `^CNXAUTO` for Automobile) to evaluate industry outperformance.
+  * Fetches Indian economic factors: **India CPI (Inflation)**, **GDP growth rate**, and the current **USD/INR Exchange Rate** automatically from Yahoo Finance and FRED economic index trackers.
+
 ---
 
-## 🇮🇳 Support for Indian Stocks (NSE & BSE)
+## 📂 How to Access & View Your Generated Reports
 
-The application includes robust, native support for Indian stock markets without requiring any additional API keys or subscription setups. It handles all NSE and BSE tickers automatically!
+Once the 4-agent crew completes its research, you can access and read the investment reports in **four convenient ways**:
 
-### 📌 How to enter Indian tickers:
-* **NSE (National Stock Exchange):** Add `.NS` to the symbol (e.g., `TCS.NS`, `RELIANCE.NS`, `INFY.NS`, `HDFCBANK.NS`).
-* **BSE (Bombay Stock Exchange):** Add `.BO` to the symbol (e.g., `TCS.BO`, `RELIANCE.BO`).
+### 🖥️ Option 1: In the Streamlit Web Dashboard (Immediate View)
+1. In the Web UI, look at the main screen on the right side.
+2. Select **Tab 1: 📄 Final Investment Report**.
+3. The report is rendered with rich markdown styling (clean headers, tables, bulleted pros & cons, and final recommendations).
+4. Select **Tab 2: 🔍 Metadata & Logs** to see backend response metadata and confirmation logs.
 
-### 🛠️ What happens automatically under the hood for Indian stocks:
-* **Market Benchmarking:** Compares the stock's performance against the **Nifty 50 Index (`^NSEI`)** instead of the S&P 500 (`SPY`).
-* **Sector Analysis:** Automatically maps the stock to its corresponding NSE Sectoral Index (e.g., `^CNXIT` for Tech, `^NSEBANK` for Finance, `^CNXAUTO` for Automobiles).
-* **Macroeconomics:** Fetches **India CPI (Inflation)**, **GDP growth**, and **USD/INR exchange rate** from FRED and Yahoo Finance rather than US Federal Reserve data.
+### 📥 Option 2: Local Markdown Download (Offline View)
+1. Go to the bottom of the **Tab 1: 📄 Final Investment Report** in your Streamlit web app.
+2. Click the **`📥 Download Report as Markdown`** button.
+3. This saves a clean, standalone `.md` file (e.g., `investment_report_TSLA.md`) directly to your local computer's downloads folder. You can open it in VS Code, Obsidian, or any Markdown viewer.
+
+### ☁️ Option 3: Permanent Cloud Storage URL (Azure Blob Storage)
+1. Go to **Tab 2: 🔍 Metadata & Logs** in your Streamlit app.
+2. Under **Backend Execution Details**, click the **`Link to File`** next to **Azure Blob Storage URL**.
+3. This opens a permanent, shareable public link hosted on your Azure Blob Storage container (`https://<account>.blob.core.windows.net/reports/investment_report_<TICKER>.md`), which you can send to other stakeholders or open on any device!
+
+### 🗄️ Option 4: Database Archival (Azure PostgreSQL logs)
+1. Developers and administrators can query the Azure PostgreSQL database to view logs of all past runs.
+2. Every analysis is saved to the `reports_log` table containing the symbol, timestamps, and full report contents.
+3. Open any database management client (like pgAdmin or DBeaver) and run the query:
+   ```sql
+   SELECT id, ticker, created_at FROM reports_log;
+   ```
+4. Alternatively, call the backend API endpoint `GET http://127.0.0.1:8000/api/v1/reports` to retrieve a list of all historically archived reports.
 
 ---
 
@@ -322,6 +357,13 @@ The FastAPI server provides several endpoints that can be integrated into extern
     "generated_at": "2026-05-18T00:54:29Z"
   }
   ```
+
+* **Interactive API Documentation (Swagger UI):**
+  You can execute and test this endpoint directly in your browser by visiting `http://localhost:8000/docs`:
+
+  ![FastAPI Swagger UI Analyze Endpoint](assets/fastapi_swagger_screenshot.png)
+
+
 
 ### 3. List Past Database Reports
 * **Route:** `GET /api/v1/reports?limit=20`
