@@ -16,9 +16,7 @@ Get a **professional, Wall Street-grade investment analysis report in under 3 mi
 
 Below is a live video demonstration showing the complete walkthrough of the Streamlit application in action (entering the stock ticker, running the AI Crew analysis, checking progress, scrolling the generated report, and inspecting database/storage logs):
 
-<video src="https://raw.githubusercontent.com/Sindhura942/ai-investment-analyst/main/.github/assets/financial_agent_demo.mp4" width="100%" controls autoplay loop muted></video>
-
-*Note: If your markdown viewer does not render the video inline, you can open the file [.github/assets/financial_agent_demo.mp4](.github/assets/financial_agent_demo.mp4) directly in any standard media player or browser.*
+![AI Financial Analyst Demo](.github/assets/financial_agent_demo.gif)
 
 ### 🎨 Web App Layout Mockup:
 
