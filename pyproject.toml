@@ -1,0 +1,27 @@
+[project]
+name = "financial-multi-agent-system"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "azure-monitor-opentelemetry>=1.6.7",
+    "azure-storage-blob>=12.28.0",
+    "crewai>=1.14.4",
+    "crewai-tools>=1.14.4",
+    "fastapi>=0.136.1",
+    "firecrawl-py>=4.25.2",
+    "fredapi>=0.5.2",
+    "langchain>=1.2.18",
+    "opentelemetry-api>=1.34.1",
+    "opentelemetry-sdk>=1.34.1",
+    "psycopg2-binary>=2.9.12",
+    "pydantic>=2.12.5",
+    "python-dotenv>=1.2.2",
+    "requests>=2.34.0",
+    "sqlalchemy>=2.0.49",
+    "streamlit>=1.57.0",
+    "uvicorn>=0.46.0",
+    "vadersentiment>=3.3.2",
+    "yfinance>=1.3.0",
+]
