@@ -7,6 +7,9 @@
 [![Azure PostgreSQL](https://img.shields.io/badge/Database-Azure_PostgreSQL-00897B?style=for-the-badge&logo=postgresql&logoColor=white)](https://azure.microsoft.com/)
 [![Azure Blob Storage](https://img.shields.io/badge/Storage-Azure_Blob-0078D4?style=for-the-badge&logo=microsoftazure&logoColor=white)](https://azure.microsoft.com/)
 [![LangSmith Observability](https://img.shields.io/badge/Tracing-LangSmith-00C853?style=for-the-badge&logo=langchain&logoColor=white)](https://www.langchain.com/langsmith)
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-Streamlit-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white)](https://ai-investement-analyst.streamlit.app)
+
+> 🚀 **[Try the Live Demo →](https://ai-investement-analyst.streamlit.app)**
 
 Get a **professional, Wall Street-grade investment analysis report in under 3 minutes** — powered by an autonomous, collaborative 4-Agent AI Team. Type in any stock symbol (US or Indian stock), click a button, and watch your digital research department go to work.
 
